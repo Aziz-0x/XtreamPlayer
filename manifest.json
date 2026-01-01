@@ -1,0 +1,21 @@
+{
+    "name": "Xtream Player",
+    "short_name": "XtreamPlayer",
+    "description": "A web-based Xtream Codes player.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#141414",
+    "theme_color": "#e50914",
+    "icons": [
+        {
+            "src": "placeholder.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "placeholder.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

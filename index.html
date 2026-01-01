@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtream Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <div id="login-container" class="login-wrapper">
+        <div class="login-box">
+            <h2><i class="fas fa-tv"></i> Xtream Login</h2>
+            <div class="input-group">
+                <label>DNS / Host URL (http://example.com:8080)</label>
+                <input type="text" id="host" placeholder="http://url:port">
+            </div>
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button onclick="login(false)">Connect</button>
+            <button onclick="debug()">Connect debug</button>
+            <p id="error-msg" class="error"></p>
+        </div>
+    </div>
+
+    <div id="dashboard" class="dashboard-wrapper hidden">
+        
+        <!-- <aside class="sidebar">
+            <div class="logo">XC Player</div>
+            <nav>
+                <button onclick="showSection('live')" class="active"><i class="fas fa-broadcast-tower"></i> Live TV</button>
+                <button onclick="showSection('vod')"><i class="fas fa-film"></i> Movies</button>
+                <button onclick="showSection('series')"><i class="fas fa-video"></i> Series</button>
+                <button onclick="logout()" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </nav>
+            <div id="account-info" class="account-info">
+                </div>
+        </aside> -->
+
+        <main class="content">
+            <div class="categories-container">
+                <h3>Categories</h3>
+                <ul id="category-list">
+                </ul>
+            </div>
+            <div class="stream-container">
+                <div class="header-bar">
+                    <h2 id="section-title">Live TV</h2>
+                    <input type="text" id="search-box" placeholder="Search..." onkeyup="filterContent()">
+                    <nav>   
+
+                        <button onclick="showSection('live')" title="Refresh" class="refresh-button"><i class="fas fa-sync-alt"></i></button>
+                        <button onclick="logout()" title="Logout" class="refresh-button"><i class="fas fa-sign-out-alt"></i></button>
+                    </nav>
+                </div>
+                <div id="stream-grid" class="grid">
+                    </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <div id="video-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closePlayer()">&times;</span>
+            <h3 id="player-title">Now Playing</h3>
+            
+            <div class="video-container">
+                <video id="player" controls crossorigin playsinline>
+                    </video>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered: ', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
