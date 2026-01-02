@@ -18,21 +18,16 @@ function print(text) {
     console.log(text);
 }
     
-function debug() {
-    print("Debug mode activated");
-    login(true);
-}
+// function debug() {
+//     print("Debug mode activated");
+//     login(true);
+// }
 
 // --- Authentication ---
 async function login(debugMode) {
     let host = document.getElementById('host').value.replace(/\/$/, ""); // Remove trailing slash
     let user = document.getElementById('username').value;
     let pass = document.getElementById('password').value;
-    if (debugMode) {
-        host = "http://aseaf1.me:8080".replace(/\/$/, "");
-        user = "119535533584";
-        pass = "137799332661";
-    }
 
 
     const errorMsg = document.getElementById('error-msg');
@@ -272,4 +267,5 @@ function closePlayer() {
     video.pause();
     video.src = ""; 
     video.load();
+
 }
