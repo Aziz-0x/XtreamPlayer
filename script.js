@@ -25,9 +25,9 @@ function print(text) {
 
 // --- Authentication ---
 async function login(debugMode) {
-    let host = document.getElementById('host').value.replace(/\/$/, ""); // Remove trailing slash
-    let user = document.getElementById('username').value;
-    let pass = document.getElementById('password').value;
+    const host = document.getElementById('host').value.replace(/\/$/, ""); // Remove trailing slash
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
 
 
     const errorMsg = document.getElementById('error-msg');
@@ -56,7 +56,7 @@ async function login(debugMode) {
         }
     } catch (error) {
         console.error(error);
-        errorMsg.innerText = "Connection failed. Check CORS or Host URL.";
+        errorMsg.innerText = "Connection failed. Check CORS or Host URL."
     }
 }
 
@@ -269,3 +269,4 @@ function closePlayer() {
     video.load();
 
 }
+
